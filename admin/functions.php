@@ -63,15 +63,4 @@ function deleteCategories() {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 ?>
