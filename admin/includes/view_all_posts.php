@@ -10,6 +10,7 @@
       <th>Tags</th>
       <th>Comments</th>
       <th>Date</th>
+			<th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -40,9 +41,26 @@
           echo "<td>{$postTags}</td>";
           echo "<td>{$postCommentCount}</td>";
           echo "<td>{$postDate}</td>";
+					echo "<td><a href='posts.php?delete={$postId}'>Delete</a></td>";
           echo "</tr>";
         }      
     
       ?>
   </tbody>
 </table>
+
+<?php 
+
+if(isset($_GET['delete'])) {
+	$deletePostId = $_GET['delete'];
+	$query = "DELETE FROM posts
+						WHERE post_id={$deletePostId}";
+	$deletePostQuery = mysqli_query($connection, $query);
+	
+	if(!$deletePostQuery) {
+		die("Query Failed");
+	}
+
+	header("Location: posts.php");
+}	
+?>

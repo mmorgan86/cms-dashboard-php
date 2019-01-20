@@ -16,6 +16,15 @@
     $postCommentCount = 4;
   
     move_uploaded_file($postImageTemp, "../images/$postImage");
+
+    $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status) ";
+
+    $query .= "VALUES({$postCategoryId},'{$postTitle}','{$postAuthor}',now(),'{$postImage}','{$postContent}','{$postTags}','{$postStatus}') ";
+    
+    $createPostQuery = mysqli_query($connection, $query);
+    
+    confirmQuery($createPostQuery);
+
   }
 ?>
 
@@ -27,8 +36,8 @@
   </div>
 
   <div class="form-group">
-    <label for="post_category">Post Category Id</label>
-    <input type="text" class="form-control" name="post_category_id">
+    <label for="post_category_id">Post Category Id</label>
+    <input type="number" class="form-control" name="post_category_id">
   </div>
 
   <div class="form-group">
@@ -42,7 +51,7 @@
   </div>
 
   <div class="form-group">
-    <label for="post_image">Post Image</label>
+    <label for="image">Post Image</label>
     <input type="file" class="form-control" name="image">
   </div>
 
