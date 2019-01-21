@@ -39,23 +39,26 @@
           echo "<td>{$commentContent}</td>";
           echo "<td>{$commentEmail}</td>";
           echo "<td>{$commentStatus}</td>";
-          echo "<td>some title here</td>";
+
+          $query = "SELECT * FROM posts WHERE post_id = $commentPostId";
+          $selectPostIdQuery = mysqli_query($connection, $query);
+
+          while($row = mysqli_fetch_assoc($selectPostIdQuery)){
+            $postId = $row['post_id'];
+            $postTitle = $row['post_title'];
+
+            echo "<td><a href='../post.php?p_id=$postId'>$postTitle</a></td>";
+
+          }
+        
           echo "<td>{$commentDate}</td>";
       
-          echo "<td><a href='posts.php?source=edit_comment&p_id={$commentId}'>Approved</a></td>";
-					echo "<td><a href='posts.php?delete={$commentId}'>Unapproved</a></td>";
-          echo "<td><a href='posts.php?delete={$commentId}'>Delete</a></td>";
+          echo "<td><a href='comments.php?approve={$commentId}'>Approve</a></td>";
+					echo "<td><a href='comments.php?unapprove={$commentId}'>Unapprove</a></td>";
+          echo "<td><a href='comments.php?delete={$commentId}'>Delete</a></td>";
           
           echo "</tr>";
 
-          // $query = "SELECT * FROM categories WHERE cat_id = {$postCategoryId}";
-          // $selectCategoriesId = mysqli_query($connection, $query);
-
-          // while($row = mysqli_fetch_assoc($selectCategoriesId)){
-          //   $catId = $row['cat_id'];
-          //   $catTitle = $row['cat_title'];
-          //   echo "<td>{$catTitle}</td>";
-          // }
         }      
     
       ?>
@@ -64,16 +67,48 @@
 
 <?php 
 
+  if(isset($_GET['unapprove'])) {
+
+    $getUnapproveCommentId = $_GET['unapprove'];
+    $query = "UPDATE comments SET comment_status = 'unapprove' WHERE comment_id= $getUnapproveCommentId";
+    $unapproveCommentQuery = mysqli_query($connection, $query);
+
+    if(!$unapproveCommentQuery) {
+      die("Unapproved Query Failed" . mysqli_error($connection));
+    }
+
+    header("Location: comments.php");
+  }
+  
+  if(isset($_GET['approve'])) {
+    $getApproveCommentId = $_GET['approve'];
+	  $query = "UPDATE comments SET comment_status = 'approve' WHERE comment_id= $getApproveCommentId ";
+	  $approveCommentQuery = mysqli_query($connection, $query);
+	
+	  if(!$approveCommentQuery) {
+		  die("Approve Query Failed" . mysqli_error($connection));
+    }
+    
+    header("Location: comments.php");
+  }
+		
+?>
+
+
+
+<?php
+
 if(isset($_GET['delete'])) {
-	$deletePostId = $_GET['delete'];
-	$query = "DELETE FROM posts
-						WHERE post_id={$deletePostId} ";
+	$deleteCommentId = $_GET['delete'];
+	$query = "DELETE FROM comments
+						WHERE comment_id={$deleteCommentId}";
 	$deletePostQuery = mysqli_query($connection, $query);
 	
-	if(!$deletePostQuery) {
-		die("Query Failed");
+	if(!$deleteCommentId) {
+		die("Query Failed" . mysqli_error($connection));
 	}
 
-	header("Location: posts.php");
+  header("Location: comments.php");
 }	
 ?>
+
