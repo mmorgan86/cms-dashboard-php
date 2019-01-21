@@ -35,12 +35,22 @@
           echo "<td>{$postId}</td>";
           echo "<td>{$postAuthor}</td>";
           echo "<td>{$postTitle}</td>";
-          echo "<td>{$postCategoryId}</td>";
+
+          $query = "SELECT * FROM categories WHERE cat_id = {$postCategoryId}";
+          $selectCategoriesId = mysqli_query($connection, $query);
+
+          while($row = mysqli_fetch_assoc($selectCategoriesId)){
+            $catId = $row['cat_id'];
+            $catTitle = $row['cat_title'];
+            echo "<td>{$catTitle}</td>";
+          }
+
           echo "<td>{$postStatus}</td>";
-          echo "<td><img src='../images/$postImage' alt='image'height='50' width='75'/></td>";
+          echo "<td><img src='../images/$postImage' alt='image' width='100'/></td>";
           echo "<td>{$postTags}</td>";
           echo "<td>{$postCommentCount}</td>";
-          echo "<td>{$postDate}</td>";
+					echo "<td>{$postDate}</td>";
+					echo "<td><a href='posts.php?source=edit_post&p_id={$postId}'>Edit</a></td>";
 					echo "<td><a href='posts.php?delete={$postId}'>Delete</a></td>";
           echo "</tr>";
         }      
@@ -54,7 +64,7 @@
 if(isset($_GET['delete'])) {
 	$deletePostId = $_GET['delete'];
 	$query = "DELETE FROM posts
-						WHERE post_id={$deletePostId}";
+						WHERE post_id={$deletePostId} ";
 	$deletePostQuery = mysqli_query($connection, $query);
 	
 	if(!$deletePostQuery) {

@@ -13,11 +13,14 @@
 		<div class="col-md-8">
 
 			<?php
+        if(isset($_GET['category'])) {
+          $postCategoryId = $_GET['category'];
+        }
 
-				$query = "SELECT * FROM posts";
-				$selctAllPostQuery = mysqli_query($connection, $query);
+				$query = "SELECT * FROM posts WHERE post_category_id = $postCategoryId ";
+				$selectPostQuery = mysqli_query($connection, $query);
 
-				while($row = mysqli_fetch_assoc($selctAllPostQuery)){
+				while($row = mysqli_fetch_assoc($selectPostQuery)){
 					$postId= $row['post_id'];
 					$postTitle = $row['post_title'];
 					$postAuthor = $row['post_author'];
@@ -51,9 +54,9 @@
 			</a>
 			<hr>
 			<p>
-				<?php echo $postContent;?>
+				<?php echo $postContent ?>
 			</p>
-			<a class="btn btn-primary" href="#">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
 			<hr>
 
