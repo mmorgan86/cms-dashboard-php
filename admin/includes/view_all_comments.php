@@ -19,7 +19,8 @@
       <?php 
       
         global $connection;
-        $query = "SELECT * FROM comments";
+        $query = "SELECT * FROM comments ";
+        $query .= "ORDER BY comment_date DESC";
       
         $selectComments = mysqli_query($connection, $query);
         while($row = mysqli_fetch_assoc($selectComments)) {
@@ -70,7 +71,7 @@
   if(isset($_GET['unapprove'])) {
 
     $getUnapproveCommentId = $_GET['unapprove'];
-    $query = "UPDATE comments SET comment_status = 'unapprove' WHERE comment_id= $getUnapproveCommentId";
+    $query = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id= $getUnapproveCommentId";
     $unapproveCommentQuery = mysqli_query($connection, $query);
 
     if(!$unapproveCommentQuery) {
@@ -82,7 +83,7 @@
   
   if(isset($_GET['approve'])) {
     $getApproveCommentId = $_GET['approve'];
-	  $query = "UPDATE comments SET comment_status = 'approve' WHERE comment_id= $getApproveCommentId ";
+	  $query = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id= $getApproveCommentId ";
 	  $approveCommentQuery = mysqli_query($connection, $query);
 	
 	  if(!$approveCommentQuery) {
@@ -107,6 +108,10 @@ if(isset($_GET['delete'])) {
 	if(!$deleteCommentId) {
 		die("Query Failed" . mysqli_error($connection));
 	}
+
+  $query = "UPDATE posts SET post_comment_count = post_comment_count - 1 ";
+  $query .= "WHERE post_id = $postId";
+  $updateCommentCount = mysqli_query($connection, $query);
 
   header("Location: comments.php");
 }	
