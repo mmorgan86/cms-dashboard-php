@@ -24,6 +24,11 @@
 					$postDate = $row['post_date'];
 					$postImage = $row['post_image'];
 					$postContent = substr($row['post_content'],0,150) . "..";
+					$postStatus = $row['post_status'];
+
+					if($postStatus !== 'published') {
+						echo "<h1>NO POST FOUND, SORRY</h1>";
+					} else {
 
       ?>
 
@@ -58,7 +63,7 @@
 			<hr>
 
 
-			<?php } ?>
+			<?php } }?>
 		</div>
 
 		<!-- Blog Sidebar Widgets Column -->
