@@ -79,24 +79,23 @@
   </div>
 
   <div class="form-group">
-    <select name="post_category" id="post_category">
 
+    <select name="user_role" id="">
       <?php
+        $query = "SELECT * FROM users";
+        $selectUsers = mysqli_query($connection, $query);
 
-        $query = "SELECT * FROM categories";
-        $selectCategories = mysqli_query($connection, $query);
+        confirmQuery($selectUsers);
 
-        confirmQuery($selectCategories);
+        while($row = mysqli_fetch_assoc($selectUsers)){
+          $userId = $row['user_id'];
+          $userRole= $row['user_role'];
 
-        while($row = mysqli_fetch_assoc($selectCategories)){
-          $catId = $row['cat_id'];
-          $catTitle = $row['cat_title'];
-
-          echo "<option value='{$catId}'>{$catTitle}</option>";
+          echo "<option value='{$userId}'>{$userRole}</option>";
         }
       ?>
-  
     </select>
+    
   </div>
 
   <div class="form-group">

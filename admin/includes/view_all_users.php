@@ -51,9 +51,9 @@
         
           
       
-          echo "<td><a href='comments.php?approve='>Approve</a></td>";
-					echo "<td><a href='comments.php?unapprove='>Unapprove</a></td>";
-          echo "<td><a href='comments.php?delete='>Delete</a></td>";
+          echo "<td><a href='users.php?change_to_admin={$userId}'>Admin</a></td>";
+					echo "<td><a href='users.php?change_to_user={$userId}'>User</a></td>";
+          echo "<td><a href='users.php?delete={$userId}'>Delete</a></td>";
           
           echo "</tr>";
 
@@ -65,29 +65,30 @@
 
 <?php 
 
-  if(isset($_GET['unapprove'])) {
+  if(isset($_GET['change_to_admin'])) {
 
-    $getUnapproveCommentId = $_GET['unapprove'];
-    $query = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id= $getUnapproveCommentId";
-    $unapproveCommentQuery = mysqli_query($connection, $query);
+    $changeToAdminId = $_GET['change_to_admin'];
+    $query = "UPDATE users SET user_role = 'admin' WHERE user_id= $changeToAdminId";
+    $changeToAdminQuery = mysqli_query($connection, $query);
 
-    if(!$unapproveCommentQuery) {
-      die("Unapproved Query Failed" . mysqli_error($connection));
+    if(!$changeToAdminQuery) {
+      die("Change To Admin Query Failed" . mysqli_error($connection));
     }
 
-    header("Location: comments.php");
+    header("Location: users.php");
   }
   
-  if(isset($_GET['approve'])) {
-    $getApproveCommentId = $_GET['approve'];
-	  $query = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id= $getApproveCommentId ";
-	  $approveCommentQuery = mysqli_query($connection, $query);
-	
-	  if(!$approveCommentQuery) {
-		  die("Approve Query Failed" . mysqli_error($connection));
+  if(isset($_GET['change_to_user'])) {
+
+    $changeToUserId = $_GET['change_to_user'];
+    $query = "UPDATE users SET user_role = 'user' WHERE user_id= $changeToUserId";
+    $changeToUserQuery = mysqli_query($connection, $query);
+
+    if(!$changeToUserQuery) {
+      die("Change To User Query Failed" . mysqli_error($connection));
     }
-    
-    header("Location: comments.php");
+
+    header("Location: users.php");
   }
 		
 ?>
@@ -97,20 +98,20 @@
 <?php
 
 if(isset($_GET['delete'])) {
-	$deleteCommentId = $_GET['delete'];
-	$query = "DELETE FROM comments
-						WHERE comment_id={$deleteCommentId}";
-	$deletePostQuery = mysqli_query($connection, $query);
+	$deleteUserId = $_GET['delete'];
+	$query = "DELETE FROM users
+						WHERE user_id = {$deleteUserId}";
+	$deleteUserQuery = mysqli_query($connection, $query);
 	
-	if(!$deleteCommentId) {
+	if(!$deleteUserQuery) {
 		die("Query Failed" . mysqli_error($connection));
 	}
 
-  $query = "UPDATE posts SET post_comment_count = post_comment_count - 1 ";
-  $query .= "WHERE post_id = $postId";
-  $updateCommentCount = mysqli_query($connection, $query);
+  // $query = "UPDATE users SET user_count = user_count - 1 ";
+  // $query .= "WHERE user_id = $userId";
+  // $updateUserCount = mysqli_query($connection, $query);
 
-  header("Location: comments.php");
+  header("Location: users.php");
 }	
 ?>
 
