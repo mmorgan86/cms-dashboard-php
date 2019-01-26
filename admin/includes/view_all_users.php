@@ -12,7 +12,6 @@
   <tbody>
       <?php 
       
-        global $connection;
         $query = "SELECT * FROM users ";
         // $query .= "ORDER BY comment_date DESC";
       
@@ -52,9 +51,9 @@
           
       
           echo "<td><a href='users.php?change_to_admin={$userId}'>Admin</a></td>";
-					echo "<td><a href='users.php?change_to_user={$userId}'>User</a></td>";
+          echo "<td><a href='users.php?change_to_user={$userId}'>User</a></td>";
+          echo "<td><a href='users.php?source=edit_user&edit_user={$userId}'>Edit</a></td>";
           echo "<td><a href='users.php?delete={$userId}'>Delete</a></td>";
-          
           echo "</tr>";
 
         }      
