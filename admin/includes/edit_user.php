@@ -37,13 +37,20 @@
   
     // move_uploaded_file($postImageTemp, "../images/$postImage");
 
-    $query = "UPDATE users SET user_firstname = '$userFirstName', user_lastname = '$userLastName', user_role = '$userRole', username = '$username', user_email = '$userEmail', user_password = '$userPassword') ";
+    $query = "UPDATE users SET ";
+    $query .= "username = '{$username}', ";
+    $query .= "user_role = '{$userRole}', ";
+    $query .= "user_firstname = '{$userFirstName}', ";
+    $query .= "user_lastname = '{$userLastName}',";
+    $query .= "user_email = '{$userEmail}', ";
+    $query .= "user_password = '{$userPassword}' ";
+    $query .= "WHERE user_id = $editUserId";
 
-    $query .= "WHERE user_id = $editUserId ";
-    
-    $createUserQuery = mysqli_query($connection, $query);
-    
-    confirmQuery($createUserQuery);
+    $editUserQuery = mysqli_query($connection, $query);
+
+    if(confirmQuery($editUserQuery)) {
+      echo "Edit User Query Failed";
+    };
 
     header("Location: users.php");
 
@@ -73,11 +80,6 @@
         } 
       ?>
     </select>
-    <!-- <select name="user_role" id="">
-      <option value="user">Select Role</option>
-      <option value="admin">Admin</option>
-      <option value="user">User</option>
-    </select> -->
   </div>
 
 <!--             ADD USER IMAGE              -->
