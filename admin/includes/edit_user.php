@@ -40,8 +40,8 @@
     $query = "UPDATE users SET ";
     $query .= "username = '{$username}', ";
     $query .= "user_role = '{$userRole}', ";
-    $query .= "user_firstname = '{$userFirstName}', ";
-    $query .= "user_lastname = '{$userLastName}',";
+    $query .= "user_firstname = '{$userFirstname}', ";
+    $query .= "user_lastname = '{$userLastname}',";
     $query .= "user_email = '{$userEmail}', ";
     $query .= "user_password = '{$userPassword}' ";
     $query .= "WHERE user_id = $editUserId";
