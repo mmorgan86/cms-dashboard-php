@@ -24,7 +24,7 @@
     
     confirmQuery($createPostQuery);
 
-    header("Location: posts.php");
+    echo "<p class='bg-success'>Post Added: ". " " . "<a href='posts.php'>View All Post</a></p>";
 
   }
 ?>
@@ -33,7 +33,7 @@
 
   <div class="form-group">
     <label for="title">Post Title</label>
-    <input type="text" class="form-control" name="title">
+    <input type="text" class="form-control" name="title" required>
   </div>
 
   <div class="form-group">
@@ -58,7 +58,7 @@
 
   <div class="form-group">
     <label for="author">Post Author</label>
-    <input type="text" class="form-control" name="author">
+    <input type="text" class="form-control" name="author" required>
   </div>
 
   <div class="form-group">
@@ -82,7 +82,7 @@
 
   <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control" name="post_content" id="content" cols="30" rows="10">
+    <textarea class="form-control" name="post_content" id="content" cols="30" rows="10" required>
     </textarea>
   </div>
 

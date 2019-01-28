@@ -66,7 +66,7 @@
       echo "update post query failed";
     };
 
-    header("Location: posts.php");
+    echo "<p class='bg-success'>Post Updated: ". " " . "<a href='../post.php?p_id={$getPostId}'>View Post</a> or <a href='posts.php'>Edit More Post</a></p>";
 
   }
 ?>  
@@ -131,7 +131,7 @@
 
   <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control" name="post_content" id="" cols="30" rows="10"><?php echo $postContent ?> 
+    <textarea class="form-control" name="post_content" id="content" cols="30" rows="10"><?php echo $postContent ?> 
     </textarea>
   </div>
 

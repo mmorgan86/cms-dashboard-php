@@ -29,15 +29,21 @@
 
 
         <li>
-        	<a href="admin">Admin</a>
+        	<a href="admin">ADMIN</a>
         </li>
-        <!-- <li>
-          <a href="#">Services</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
-        </li>
-          </ul> -->
+
+        <?php
+
+          if(isset($_SESSION['user_role'])) {
+            if(isset($_GET['p_id'])) {
+              $getPostId = $_GET['p_id'];
+              echo "<li><a href='admin/posts.php?source=edit_post&p_id={$getPostId} '>Edit Post</a></li>";
+            }
+          }
+          
+        ?>
+
+          </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
