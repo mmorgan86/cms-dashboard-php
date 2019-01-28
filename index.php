@@ -26,9 +26,7 @@
 					$postContent = substr($row['post_content'],0,150) . "..";
 					$postStatus = $row['post_status'];
 
-					if($postStatus !== 'published') {
-						echo "<h1>NO POST FOUND, SORRY</h1>";
-					} else {
+					if($postStatus === 'published') {
 
       ?>
 

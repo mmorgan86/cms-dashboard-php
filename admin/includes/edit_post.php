@@ -66,6 +66,7 @@
       echo "update post query failed";
     };
 
+    header("Location: posts.php");
 
   }
 ?>  
@@ -105,8 +106,16 @@
   </div>
 
   <div class="form-group">
-    <label for="post_status">Post Status</label>
-    <input type="text" class="form-control" name="post_status" value="<?php echo $postStatus ?> ">
+    <select name="post_status" id="" required>
+      <option value='<?php echo $postStatus ?>'><?php echo ucfirst($postStatus) ?></option>
+      <?php
+        if($postStatus == 'published') {
+          echo "<option value='draft'>Draft</option>";
+        }else {
+          echo "<option value='published'>Publish</option>";
+        } 
+      ?>
+    </select>
   </div>
 
   <div class="form-group">

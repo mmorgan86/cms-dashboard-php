@@ -24,6 +24,8 @@
     
     confirmQuery($createPostQuery);
 
+    header("Location: posts.php");
+
   }
 ?>
 
@@ -35,9 +37,8 @@
   </div>
 
   <div class="form-group">
-    <label for="post_category">Post Category</label>
-    <br>
-    <select name="post_category" id="post_category">
+    <select name="post_category" id="post_category" required>
+      <option value=''>Select Category</option>
       <?php
         $query = "SELECT * FROM categories";
         $selectCategories = mysqli_query($connection, $query);
@@ -49,6 +50,7 @@
           $catTitle = $row['cat_title'];
 
           echo "<option value='{$catId}'>{$catTitle}</option>";
+
         }
       ?>
     </select>
@@ -60,8 +62,12 @@
   </div>
 
   <div class="form-group">
-    <label for="post_status">Post Status</label>
-    <input type="text" class="form-control" name="post_status">
+    <select name="post_status" id="" required>
+      <option name='post_status' value=''>Select Status</option>
+      <option name='post_status' value='draft'>Draft</option>
+      <option name='post_status' value='published'>Published</option>
+      
+    </select>
   </div>
 
   <div class="form-group">
@@ -76,7 +82,7 @@
 
   <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control" name="post_content" id="" cols="30" rows="10">
+    <textarea class="form-control" name="post_content" id="content" cols="30" rows="10">
     </textarea>
   </div>
 
@@ -85,3 +91,12 @@
   </div>
 
 </form>
+
+<!-- CK EDITOR -->
+<!-- <script>
+    ClassicEditor
+    .create(document.querySelector('#content'))
+    .catch(error => {
+        console.error(error);
+    }); 
+</script> -->

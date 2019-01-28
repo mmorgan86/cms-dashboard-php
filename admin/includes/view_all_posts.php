@@ -71,7 +71,6 @@ if(isset($_GET['delete'])) {
 	if(!$deletePostQuery) {
 		die("Query Failed");
 	}
-
-	header("Location: posts.php");
+  
 }	
 ?>
