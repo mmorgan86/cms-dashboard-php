@@ -24,7 +24,10 @@
     
     confirmQuery($createPostQuery);
 
-    echo "<p class='bg-success'>Post Added: ". " " . "<a href='posts.php'>View All Post</a></p>";
+    $getPostId = mysqli_insert_id($connection);
+
+    // PRINTS OUT GREEN HIGHLIGHT IF SUCCESSFUL POST
+    echo "<p class='bg-success'>Post Added: ". " " . "<a href='../post.php?p_id={$getPostId}'>View Your Post</a> or <a href='posts.php'>View All Post</a></p>";
 
   }
 ?>
@@ -65,8 +68,7 @@
     <select name="post_status" id="" required>
       <option name='post_status' value=''>Select Status</option>
       <option name='post_status' value='draft'>Draft</option>
-      <option name='post_status' value='published'>Published</option>
-      
+      <option name='post_status' value='published'>Publish</option>
     </select>
   </div>
 

@@ -9,6 +9,7 @@
 
     <!-- js scripts file -->
     <script src="js/scripts.js"></script>
+    
 
 </body>
 

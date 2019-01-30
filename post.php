@@ -65,27 +65,39 @@
 			<?php
 
 				if(isset($_POST['create_comment'])) {
+
 					$getPostId = $_GET['p_id'];
 					$postCommentAuthor = $_POST['comment_author'];
 					$postCommentEmail = $_POST['comment_email'];
 					$postCommentContent = $_POST['comment_content'];
 
-					$query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
+					if(!empty($postCommentAuthor) && !empty($postCommentEmail) && !empty($postCommentContent)) {
 
-					$query .= "VALUES($getPostId, '{$postCommentAuthor}', '{$postCommentEmail}', '{$postCommentContent}', 'UNAPPROVED', now())";
+						$query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
 
-					$createCommentQuery = mysqli_query($connection, $query);
-					
-					if(!$createCommentQuery) {
-						die("QUERY FAILED " . mysqli_error($connection));
+						$query .= "VALUES($getPostId, '{$postCommentAuthor}', '{$postCommentEmail}', '{$postCommentContent}', 'UNAPPROVED', now())";
+
+						$createCommentQuery = mysqli_query($connection, $query);
+						
+						if(!$createCommentQuery) {
+							die("QUERY FAILED " . mysqli_error($connection));
+						}
+
+
+						$query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+						$query .= "WHERE post_id = $getPostId";
+						$updateCommentCount = mysqli_query($connection, $query);
+						
+						$message = "<h6 class='text-center bg-success'>Your comment has been submitted</h6>";
+					} else {
+						$message = "<h6 class='text-center bg-danger'>Fields cannot be left empty</h6>";
 					}
-
-
-					$query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
-					$query .= "WHERE post_id = $getPostId";
-					$updateCommentCount = mysqli_query($connection, $query);
-
+				} else {
+					$message = "";
 				}
+					
+
+					
 
 			?>
 
@@ -93,7 +105,7 @@
 			<div class="well">
 				<h4>Leave a Comment:</h4>
 				<form role="form" action="" method="post">
-
+					<?php echo $message ?>
 					<div class="form-group">
 						<label for="Author">Author</label>
 						<input class="form-control" type="text" name="comment_author">
