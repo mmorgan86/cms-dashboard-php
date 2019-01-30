@@ -39,9 +39,9 @@
   }
 
 ?>
-
+<div class="table-responsive">
 <form action="" method="post">
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered table-hover table-striped">
     <div class="row">
       <div id="bulkOptionContainer" class="col-xs-4 form-group">
         <select class="form-control" name="bulkOptions" id="">
@@ -75,6 +75,7 @@
         <th>View</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Post Views</th>
       </tr>
     </thead>
     <tbody>
@@ -94,6 +95,8 @@
             $postTags = $row['post_tags'];
             $postCommentCount = $row['post_comment_count'];
             $postDate = $row['post_date'];
+            $postViews = $row['post_views'];
+
   
         
             echo "<tr>";
@@ -123,6 +126,7 @@
             echo "<td><a href='../post.php?p_id={$postId}'>View Post</a></td>";
             echo "<td><a href='posts.php?source=edit_post&p_id={$postId}'>Edit</a></td>";
             echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?');  \" href='posts.php?delete={$postId}'>Delete</a></td>";
+            echo "<td><a href='posts.php?reset={$postId}'' >{$postViews}</a></td>";
             echo "</tr>";
           }      
       
@@ -130,6 +134,7 @@
     </tbody>
   </table>
 </form>
+</div>
 
 <?php 
 
@@ -146,4 +151,18 @@ if(isset($_GET['delete'])) {
   header("Location: posts.php");
   
 }	
+
+if(isset($_GET['reset'])) {
+	$resetPostId = $_GET['reset'];
+	$query = "UPDATE posts SET post_views = 0
+						WHERE post_id=" . mysqli_real_escape_string($connection, $_GET['reset']) . " ";
+	$resetViewCountQuery = mysqli_query($connection, $query);
+	
+	if(!$resetViewCountQuery) {
+		die("Reset Query Failed " . mysqli_error($connection));
+  }
+  
+  header("Location: posts.php");
+  
+}
 ?>

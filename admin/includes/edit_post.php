@@ -36,6 +36,7 @@
 
     $postTags= $_POST['post_tags'];
     $postContent = $_POST['post_content'];
+    $postViews = $_POST['post_views'];
 
     move_uploaded_file($postImageTemp, "../images/$postImage");
 

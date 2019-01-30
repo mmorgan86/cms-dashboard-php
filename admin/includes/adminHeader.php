@@ -56,3 +56,6 @@
 </head>
 
 <body>
+<div id='load-screen'>
+  <div id='loading'></div>
+</div>
