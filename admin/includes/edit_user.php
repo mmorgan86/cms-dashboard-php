@@ -12,11 +12,12 @@
           $userId = $row['user_id'];
           $userRole = $row['user_role'];
           $username =  $row['username'];
-          $userPassword = $row['user_password'];
+          $userPassword = $row['user_password']; 
           $userFirstName = $row['user_firstname'];
           $userLastName = $row['user_lastname'];
           $userEmail = $row['user_email'];
           $userImage= $row['user_image'];
+          $salt = $row['user_randSalt'];
         }
   }
 
@@ -32,6 +33,8 @@
     $username = $_POST['username'];
     $userEmail = $_POST['user_email'];
     $userPassword = $_POST['user_password'];
+    $hashPassword = crypt($userPassword, $salt);
+
 
     // $postDate = date('d-m-y');
   
@@ -43,7 +46,7 @@
     $query .= "user_firstname = '{$userFirstname}', ";
     $query .= "user_lastname = '{$userLastname}',";
     $query .= "user_email = '{$userEmail}', ";
-    $query .= "user_password = '{$userPassword}' ";
+    $query .= "user_password = '{$hashPassword}' ";
     $query .= "WHERE user_id = $editUserId";
 
     $editUserQuery = mysqli_query($connection, $query);
@@ -71,7 +74,7 @@
   
   <div class="form-group">
     <select name="user_role" id="">
-      <option value='user'><?php echo ucfirst($userRole) ?></option>
+      <option value='<?php echo $userRole ?>'><?php echo ucfirst($userRole) ?></option>
       <?php
         if($userRole == 'admin') {
           echo "<option value='user'>User</option>";

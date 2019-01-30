@@ -40,7 +40,7 @@
 ?>
 
 	<div class="well">
-		<h4>Topics</h4>
+		<h4>Car Groups</h4>
 		<div class="row">
 			<div class="col-lg-12">
 				<ul class="list-unstyled">
