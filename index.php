@@ -36,7 +36,7 @@
 				</a>
 			</h2>
 			<p class="lead">
-				by <a href="index.php">
+				by <a href="authorPost.php?author=<?php echo $postAuthor ?>&p_id=<?php echo $postId; ?>">
 					<?php echo $postAuthor ?></a>
 			</p>
 			<p><span class="glyphicon glyphicon-time"></span> Posted on
