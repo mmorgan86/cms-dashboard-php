@@ -20,8 +20,9 @@
               $selctAllCategoriesQuery = mysqli_query($connection, $query);
 
               while($row = mysqli_fetch_assoc($selctAllCategoriesQuery)){
+                $catId = $row['cat_id'];
                 $catTitle = $row['cat_title'];
-                echo "<li><a href='#'>{$catTitle}</a></li>";
+                echo "<li><a href='category.php?category=$catId'>{$catTitle}</a></li>";
 
               }
 

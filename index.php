@@ -33,7 +33,7 @@
 				$findCountQuery = mysqli_query($connection, $query);
 				$count = mysqli_num_rows($findCountQuery);
 
-				$count = ceil($count / $per_page) + 1;
+				$count = ceil($count / $per_page);
 
 				$query = "SELECT * FROM posts LIMIT $page_1, $per_page";
 				$selctAllPostQuery = mysqli_query($connection, $query);
@@ -50,7 +50,7 @@
 					if($postStatus === 'published') {
 
 			?>
-			
+
 			<!-- First Blog Post -->
 			<h2>
 				<a href="post.php?p_id=<?php echo $postId; ?>">
@@ -91,9 +91,13 @@
 	<ul class="pager">
 		<?php
 			for($i = 1; $i <= $count; $i++) {
-				echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
-			}
 
+				if($i == $page) {
+					echo "<li><a class='active_link' href='index.php?page={$i}'>{$i}</a></li>";
+				} else {
+				echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
+				}
+			}
 		?>
 
 		

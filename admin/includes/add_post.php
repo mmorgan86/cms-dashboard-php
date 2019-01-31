@@ -1,4 +1,5 @@
 <?php
+  $user = $_SESSION['username'];
 
   if(isset($_POST['create_post'])) {
 
@@ -13,6 +14,8 @@
     $postTags= $_POST['post_tags'];
     $postContent = $_POST['post_content'];
     $postDate = date('d-m-y');
+
+    
   
     move_uploaded_file($postImageTemp, "../images/$postImage");
 
@@ -61,7 +64,7 @@
 
   <div class="form-group">
     <label for="author">Post Author</label>
-    <input type="text" class="form-control" name="author" required>
+    <input type="text" class="form-control" name="author" value="<?php echo $user ?>" readonly>
   </div>
 
   <div class="form-group">
@@ -93,12 +96,3 @@
   </div>
 
 </form>
-
-<!-- CK EDITOR -->
-<!-- <script>
-    ClassicEditor
-    .create(document.querySelector('#content'))
-    .catch(error => {
-        console.error(error);
-    }); 
-</script> -->

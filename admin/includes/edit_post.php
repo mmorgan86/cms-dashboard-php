@@ -24,6 +24,15 @@
     $postContent = $row['post_content'];
   }
 
+// Get dynamic category
+  $query = "SELECT cat_title FROM categories WHERE cat_id=$postCategoryId";
+  $getCatQuery = mysqli_query($connection, $query);
+  if(!$getCatQuery) {
+    die("Get Category Query Failed " .  myslqi_error($connection));
+  }
+  $row = mysqli_fetch_assoc($getCatQuery);
+  $category = $row['cat_title'];
+
   if(isset($_POST['update_post'])) {
     
     $postTitle = $_POST['title'];
@@ -80,7 +89,7 @@
   </div>
 
   <div class="form-group">
-    <select name="post_category" id="post_category">
+    <select name="post_category" id="post_category" required>
 
       <?php
 
@@ -88,7 +97,7 @@
         $selectCategories = mysqli_query($connection, $query);
 
         confirmQuery($selectCategories);
-
+        echo "<option value='<?php $category ?>'>{$category}</option>";
         while($row = mysqli_fetch_assoc($selectCategories)){
           $catId = $row['cat_id'];
           $catTitle = $row['cat_title'];
@@ -102,7 +111,7 @@
 
   <div class="form-group">
     <label for="author">Post Author</label>
-    <input type="text" class="form-control" name="author" value="<?php echo $postAuthor ?>">
+    <input type="text" class="form-control" name="author" value="<?php echo $postAuthor ?>" >
   </div>
 
   <div class="form-group">
