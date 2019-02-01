@@ -20,7 +20,7 @@
             <small>
               <?php echo $_SESSION['username']; ?></small>
           </h1>
-          
+
         </div>
       </div>
       <!-- /.row -->
@@ -189,7 +189,6 @@
 
                   
                 ?>
-              // ['Post', 1000],
             ]);
 
             var options = {

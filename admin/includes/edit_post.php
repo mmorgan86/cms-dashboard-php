@@ -36,7 +36,7 @@
   if(isset($_POST['update_post'])) {
     
     $postTitle = $_POST['title'];
-    $postAuthor = $_POST['author'];
+    $postAuthor = $_POST['post_author'];
     $postCategoryId = $_POST['post_category'];
     $postStatus = $_POST['post_status'];
 
@@ -45,7 +45,6 @@
 
     $postTags= $_POST['post_tags'];
     $postContent = $_POST['post_content'];
-    $postViews = $_POST['post_views'];
 
     move_uploaded_file($postImageTemp, "../images/$postImage");
 
@@ -65,16 +64,16 @@
     $query .= "post_date = now(), ";
     $query .= "post_author = '{$postAuthor}', ";
     $query .= "post_status = '{$postStatus}', ";
-    $query .= "post_tags = '{$postTags}',";
+    $query .= "post_tags = '{$postTags}', ";
     $query .= "post_content = '{$postContent}', ";
     $query .= "post_image = '{$postImage}' ";
     $query .= "WHERE post_id = $getPostId";
 
     $updatePostQuery = mysqli_query($connection, $query);
 
-    if(confirmQuery($updatePostQuery)) {
-      echo "update post query failed";
-    };
+    if(!$updatePostQuery) {
+      die('Update Post Query Failed ' . mysqli_error($connection));
+    }
 
     echo "<p class='bg-success'>Post Updated: ". " " . "<a href='../post.php?p_id={$getPostId}'>View Post</a> or <a href='posts.php'>Edit More Post</a></p>";
 
@@ -97,12 +96,17 @@
         $selectCategories = mysqli_query($connection, $query);
 
         confirmQuery($selectCategories);
-        echo "<option value='<?php $category ?>'>{$category}</option>";
+        echo "<option value='$postCategoryId'>{$category}</option>";
         while($row = mysqli_fetch_assoc($selectCategories)){
           $catId = $row['cat_id'];
           $catTitle = $row['cat_title'];
 
-          echo "<option value='{$catId}'>{$catTitle}</option>";
+          if ($postCategoryId == $catId) {
+            echo "<option style='display: none' value='{$catId}'>{$catTitle}</option>";
+          } else {
+            echo "<option value='{$catId}'>{$catTitle}</option>";
+          }
+          // SET A REFRESH POINT HERE IN THE FUTURE
         }
       ?>
   
@@ -110,8 +114,8 @@
   </div>
 
   <div class="form-group">
-    <label for="author">Post Author</label>
-    <input type="text" class="form-control" name="author" value="<?php echo $postAuthor ?>" >
+    <label for="post_author">Post Author</label>
+    <input type="text" class="form-control" name="post_author" value="<?php echo $postAuthor ?>">
   </div>
 
   <div class="form-group">
