@@ -115,5 +115,6 @@ if(isset($_GET['delete'])) {
 
   header("Location: comments.php");
 }	
+
 ?>
 
