@@ -32,6 +32,9 @@ if ($connection->connect_error) {
 // Create connection
 $connection = new mysqli($hostname, $username, $password, $database);
 
+
+echo "connected";
+
 }
 
 
