@@ -2,10 +2,18 @@
 
 $url = getenv('mysql://ivancnf75wfzdbcs:in8l5tj2l4dqhmh2@lgg2gx1ha7yp2w0k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ju6j8cr35erg1fts');
 
-$hostname = 'lgg2gx1ha7yp2w0k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-$username = 'ivancnf75wfzdbcs';
-$password = 'in8l5tj2l4dqhmh2';
-$database = 'ju6j8cr35erg1fts';
+// JAWSDB MYSQL CONNECTION
+// $hostname = 'lgg2gx1ha7yp2w0k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+// $username = 'ivancnf75wfzdbcs';
+// $password = 'in8l5tj2l4dqhmh2';
+// $database = 'ju6j8cr35erg1fts';
+
+
+// CLEARDB CONNECTION
+$hostname = 'us-cdbr-iron-east-03.cleardb.net';
+$username = 'b4be560b7ec604';
+$password = '8427d5ed';
+$database = 'heroku_82764f0c48878ae';
 
 // Create connection
 $connection = new mysqli($hostname, $username, $password, $database);

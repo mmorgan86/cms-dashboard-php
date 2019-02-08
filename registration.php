@@ -65,7 +65,7 @@
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
           <div class="form-wrap">
-            <h1>Register</h1>
+            <h1 class="text-center">Register</h1>
             <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
               <h6 class="text-center"><?php echo $message ?></h6>
               <div class="form-group">
