@@ -15,7 +15,7 @@
 			<?php
 
 			// sets how many results you want to show per page
-				$per_page = 2;
+				$per_page = 4;
 
 				if(isset($_GET['page'])) {
 					$page = $_GET['page'];
