@@ -23,11 +23,13 @@ $connection = new mysqli($hostname, $username, $password, $database);
 // Check connection
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
-} else {
-  $hostname = 'localhost';
-  $username = 'root';
-  $password = '';
-  $database = 'cms';
+} 
+
+// else {
+//   $hostname = 'localhost';
+//   $username = 'root';
+//   $password = '';
+//   $database = 'cms';
 
 // Create connection
 $connection = new mysqli($hostname, $username, $password, $database);
@@ -35,7 +37,7 @@ $connection = new mysqli($hostname, $username, $password, $database);
 
 echo "connected";
 
-}
+// }
 
 
 
