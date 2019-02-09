@@ -43,7 +43,8 @@
 			<!-- LOGGED IN REMOVE FORM -->
 			<h2>Hi, You are logged in as <?php echo $_SESSION['username']  ?></h2>
 			<button type="submit" value="logout">Logout</button>
-			<button><a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a></button>
+			<a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i><button> Logout</button></a>
+			<span style="padding-left: 20px"><a href="registration.php"><button> Register</button></a></span>
 
 
 			<!-- <div class="well" >
