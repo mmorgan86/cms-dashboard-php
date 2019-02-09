@@ -46,7 +46,7 @@
 		<div class="row"> -->
 			<!-- <div class="col-xs-6 col-xs-offset-3"> -->
 				<!-- <div class="form-wrap"> -->
-					<h4 class="text-center">Register</h4>
+					<h4>Register</h4>
 					<form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
 						<h6 class="text-center"><?php echo $message ?></h6>
 						<div class="form-group">
