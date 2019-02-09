@@ -17,22 +17,50 @@
 	</div>
 
 	<!-- Login Form -->
-	<div class="well">
-		<h4>Login</h4>
-		<form action="includes/login.php" method="post">
-			<div class="form-group">
-				<input name="username" type="text" class="form-control" placeholder="Enter Username" required="Please enter a valid username">
-			</div>
-			<div class="input-group">
-				<input name="password" type="password" class="form-control" placeholder="Enter Password" required="Please enter a valid username">
-				<span class="input-group-btn">
-					<button class="btn btn-primary" name="login" type="submit">Login</button>
-				</span>
-			</div>
-		</form> <!-- search form --->
-		<!-- /.input-group -->
-	</div>
-	<!-- Blog Categories Well -->
+	<?php
+		if(isset($_SESSION['username']) == "") {
+			echo "<h2 style='color: red;'>Please Login</h2>"
+	?>
+		<div class="well border border-danger" >
+			<h4>Login</h4>
+			<form action="includes/login.php" method="post">
+				<div class="form-group">
+					<input name="username" type="text" class="form-control border border-danger" placeholder="Enter Username" required="Please enter a valid username">
+				</div>
+				<div class="input-group">
+					<input name="password" type="password" class="form-control border border-danger" placeholder="Enter Password" required="Please enter a valid username">
+					<span class="input-group-btn">
+						<button class="btn btn-danger" name="login" type="submit">Login</button>
+					</span>
+				</div>
+			</form> <!-- search form --->
+			<!-- /.input-group -->
+		</div>
+		<!-- Blog Categories Well -->
+		<?php } else {
+		?>
+			<div class="well" >
+			<h4>Login</h4>
+			<form action="includes/login.php" method="post">
+				<div class="form-group">
+					<input name="username" type="text" class="form-control" placeholder="Enter Username" required="Please enter a valid username">
+				</div>
+				<div class="input-group">
+					<input name="password" type="password" class="form-control" placeholder="Enter Password" required="Please enter a valid username">
+					<span class="input-group-btn">
+						<button class="btn btn-primary" name="login" type="submit">Login</button>
+					</span>
+				</div>
+			</form> <!-- search form --->
+			<!-- /.input-group -->
+		</div>
+		<!-- Blog Categories Well -->
+		<?php
+		}
+	?>
+
+
+	
 <?php 
 
 	$query = "SELECT * FROM categories";
