@@ -41,7 +41,7 @@ function insertCategories() {
   global $connection;
 
   if(isset($_POST['submit'])) {
-    $catTitle = $_POST['cat_title'];
+    $catTitle = mysqli_real_escape_string($connection,$_POST['cat_title']);
     
     if($catTitle === "" || empty($catTitle)) {
       echo "This field should not be empty!";
