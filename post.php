@@ -66,16 +66,16 @@
 			}
 			?>
 
-			<!-- Blog Comments -->
+			<!-- CREATE COMMENTS -->
 
 			<?php
 
 				if(isset($_POST['create_comment'])) {
 
-					$getPostId = $_GET['p_id'];
-					$postCommentAuthor = $_POST['comment_author'];
-					$postCommentEmail = $_POST['comment_email'];
-					$postCommentContent = $_POST['comment_content'];
+					$getPostId = mysqli_real_escape_string($connection,$_GET['p_id']);
+					$postCommentAuthor = mysqli_real_escape_string($connection,$_POST['comment_author']);
+					$postCommentEmail = mysqli_real_escape_string($connection,$_POST['comment_email']);
+					$postCommentContent = mysqli_real_escape_string($connection,$_POST['comment_content']);
 
 					if(!empty($postCommentAuthor) && !empty($postCommentEmail) && !empty($postCommentContent)) {
 
