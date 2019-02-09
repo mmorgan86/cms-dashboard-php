@@ -32,11 +32,16 @@
 					<span class="input-group-btn">
 						<button class="btn btn-success" name="login" type="submit">Login</button>
 					</span>
-					
-					<!-- Page Content -->
-<div class="container">
+				</div>
+			</form> <!-- search form --->
+			<!-- /.input-group -->
+		</div>
+		<!-- Blog Categories Well -->
 
-<section id="login">
+
+		<!-- Page Content -->
+
+<div class="well">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
@@ -64,11 +69,7 @@
 			</div> <!-- /.col-xs-12 -->
 		</div> <!-- /.row -->
 	</div> <!-- /.container -->
-				</div>
-			</form> <!-- search form --->
-			<!-- /.input-group -->
 		</div>
-		<!-- Blog Categories Well -->
 		<?php } else {
 		?>
 
