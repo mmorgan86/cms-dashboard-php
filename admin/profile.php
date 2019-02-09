@@ -24,16 +24,16 @@
 <?php 
   if(isset($_POST['edit_profile'])) {
    
-    $userFirstname = $_POST['user_firstname'];
-    $userLastname = $_POST['user_lastname'];
-    $userRole = $_POST['user_role'];
+    $userFirstname = mysqli_real_escape_string($connection,$_POST['user_firstname']);
+    $userLastname = mysqli_real_escape_string($connection,$_POST['user_lastname']);
+    $userRole = mysqli_real_escape_string($connection,$_POST['user_role']);
 
     // $postImage = $_FILES['image']['name'];
     // $postImageTemp = $_FILES['image']['tmp_name'];
 
-    $username = $_POST['username'];
-    $userEmail = $_POST['user_email'];
-    $userPassword = $_POST['user_password'];
+    $username = mysqli_real_escape_string($connection,$_POST['username']);
+    $userEmail = mysqli_real_escape_string($connection,$_POST['user_email']);
+    $userPassword = mysqli_real_escape_string($connection,$_POST['user_password']);
 
     // $postDate = date('d-m-y');
   
