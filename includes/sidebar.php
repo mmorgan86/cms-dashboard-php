@@ -51,15 +51,15 @@
 						<h6 class="text-center"><?php echo $message ?></h6>
 						<div class="form-group">
 							<label for="username" class="sr-only">username</label>
-							<input type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username">
+							<input type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username" required>
 						</div>
 						<div class="form-group">
 							<label for="email" class="sr-only">Email</label>
-							<input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+							<input type="email" name="email" id="email" class="form-control" placeholder="Enter email" required>
 						</div>
 						<div class="form-group">
 							<label for="password" class="sr-only">Password</label>
-							<input type="password" name="password" id="key" class="form-control" placeholder="Password">
+							<input type="password" name="password" id="key" class="form-control" placeholder="Password" required>
 						</div>
 
 						<input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
