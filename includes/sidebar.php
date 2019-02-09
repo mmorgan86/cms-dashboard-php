@@ -31,8 +31,9 @@
 					<input name="password" type="password" class="form-control border border-danger" placeholder="Enter Password" required="Please enter a valid username">
 					<span class="input-group-btn">
 						<button class="btn btn-success" name="login" type="submit">Login</button>
+						<a href="registration.php"><button class="btn btn-primary"> Register</button></a>
 					</span>
-					<a href="registration.php"><button class="btn btn-primary"> Register</button></a>
+					
 				</div>
 			</form> <!-- search form --->
 			<!-- /.input-group -->
