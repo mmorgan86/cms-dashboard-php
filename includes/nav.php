@@ -30,7 +30,7 @@
 
 
         <li>
-        	<a href="admin" style="color: green">ADMIN</a>
+        	<a href="admin">ADMIN</a>
         </li>
         <!-- <li>
         	<a href="registration.php" style="color: blue">REGISTER</a>
