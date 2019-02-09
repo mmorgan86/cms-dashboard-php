@@ -13,7 +13,7 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav text-right">
+          <ul class="nav navbar-nav">
             <?php
 
               $query = "SELECT * FROM categories";
@@ -30,10 +30,10 @@
 
 
         <li>
-        	<a href="admin">ADMIN</a>
+        	<a href="admin" style="color: green">ADMIN</a>
         </li>
         <li>
-        	<a href="registration.php">REGISTER</a>
+        	<a href="registration.php" style="color: blue">REGISTER</a>
         </li>
 
         <?php
