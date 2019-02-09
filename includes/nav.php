@@ -32,9 +32,9 @@
         <li>
         	<a href="admin" style="color: green">ADMIN</a>
         </li>
-        <li>
+        <!-- <li>
         	<a href="registration.php" style="color: blue">REGISTER</a>
-        </li>
+        </li> -->
 
         <?php
 
