@@ -49,7 +49,7 @@
 				<?php echo $postDate ?>
 			</p>
 			<hr>
-			<img class="img-responsive" src="images/<?php echo $postImage ?>" alt="">
+			<img class="img-responsive" src="images/<?php echo $postImage ?>" alt="" width="700" height="auto">
 			<hr>
 			<p>
 				<?php echo $postContent ?>
