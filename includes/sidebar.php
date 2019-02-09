@@ -76,7 +76,7 @@
 
 			<!-- LOGGED IN REMOVE FORM -->
 		<div class="well">
-			<h2>You are logged in as <?php echo $_SESSION['username']  ?></h2>
+			<h4>You are logged in as <?php echo $_SESSION['username']  ?></h4>
 			<a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i><button> Logout</button></a>
 		</div>
 
