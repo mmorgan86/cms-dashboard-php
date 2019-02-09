@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="car talk forum for people to talk cars. You drive it? lets talk about it. Post any awesome pictures, ask questions, talk with like minded individuals.">
+    <meta name="description" content="Car talk forum for people to talk cars. You drive it? Lets talk about it. Post cool pictures or ask questions. Come talk with like minded individuals.">
     <meta name="author" content="created by Michael Morgan">
 
     <title>Car Talk</title>
