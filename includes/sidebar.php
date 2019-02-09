@@ -60,9 +60,10 @@
 						<div class="form-group">
 							<label for="password" class="sr-only">Password</label>
 							<input type="password" name="password" id="key" class="form-control" placeholder="Password" required>
+							<span class="input-group-btn"><button class="btn btn-primary" name="submit" type="submit"> Register</button></span>
 						</div>
 
-						<input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
+						<!-- <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register"> -->
 					</form>
 
 				<!-- </div> -->
