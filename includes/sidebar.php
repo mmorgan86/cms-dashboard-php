@@ -42,10 +42,10 @@
 		<!-- Page Content -->
 
 <div class="well">
-	<div class="container">
-		<div class="row">
+	<!-- <div class="container">
+		<div class="row"> -->
 			<!-- <div class="col-xs-6 col-xs-offset-3"> -->
-				<div class="form-wrap">
+				<!-- <div class="form-wrap"> -->
 					<h4 class="text-center">Register</h4>
 					<form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
 						<h6 class="text-center"><?php echo $message ?></h6>
@@ -65,10 +65,10 @@
 						<input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
 					</form>
 
-				</div>
+				<!-- </div> -->
 			<!-- </div> --> <!-- /.col-xs-12 -->
-		</div> <!-- /.row -->
-	</div> <!-- /.container -->
+	<!-- </div> --> <!-- /.row -->
+	<!-- </div> --> <!-- /.container -->
 		</div>
 		<?php } else {
 		?>
