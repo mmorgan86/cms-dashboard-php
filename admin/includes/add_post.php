@@ -3,16 +3,16 @@
 
   if(isset($_POST['create_post'])) {
 
-    $postTitle = $_POST['title'];
-    $postAuthor = $_POST['author'];
-    $postCategoryId = $_POST['post_category'];
-    $postStatus = $_POST['post_status'];
+    $postTitle = mysqli_real_escape_string($connection,$_POST['title']);
+    $postAuthor = mysqli_real_escape_string($connection,$_POST['author']);
+    $postCategoryId = mysqli_real_escape_string($connection,$_POST['post_category']);
+    $postStatus = mysqli_real_escape_string($connection,$_POST['post_status']);
 
     $postImage = $_FILES['image']['name'];
     $postImageTemp = $_FILES['image']['tmp_name'];
 
-    $postTags= $_POST['post_tags'];
-    $postContent = $_POST['post_content'];
+    $postTags= mysqli_real_escape_string($connection,$_POST['post_tags']);
+    $postContent = mysqli_real_escape_string($connection,$_POST['post_content']);
     $postDate = date('d-m-y');
 
     
