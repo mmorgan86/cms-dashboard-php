@@ -30,8 +30,9 @@
 				<div class="input-group">
 					<input name="password" type="password" class="form-control border border-danger" placeholder="Enter Password" required="Please enter a valid username">
 					<span class="input-group-btn">
-						<button class="btn btn-danger" name="login" type="submit">Login</button>
+						<button class="btn btn-success" name="login" type="submit">Login</button>
 					</span>
+					<a href="registration.php"><button class="btn btn-primary"> Register</button></a>
 				</div>
 			</form> <!-- search form --->
 			<!-- /.input-group -->
@@ -44,7 +45,6 @@
 		<div class="well">
 			<h2>Hi, You are logged in as <?php echo $_SESSION['username']  ?></h2>
 			<a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i><button> Logout</button></a>
-			<span><a href="registration.php"><button> Register</button></a></span>
 		</div>
 
 			<!-- <div class="well" >
