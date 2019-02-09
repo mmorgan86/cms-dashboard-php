@@ -15,7 +15,7 @@
 			<?php
 
 			// sets how many results you want to show per page
-				$per_page = 5;
+				$per_page = 4;
 
 				if(isset($_GET['page'])) {
 					$page = $_GET['page'];
@@ -34,11 +34,7 @@
 				$findCountQuery = mysqli_query($connection, $query);
 				$count = mysqli_num_rows($findCountQuery);
 
-				if(ceil($count / $per_page) == 1) {
-					$count = ceil($count / $per_page);
-				} else {
-					$count = ceil($count / $per_page) + 1;
-				}
+				$count = ceil($count / $per_page);
 
 				$query = "SELECT * FROM posts LIMIT $page_1, $per_page";
 				$selctAllPostQuery = mysqli_query($connection, $query);
