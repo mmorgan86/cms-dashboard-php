@@ -44,7 +44,7 @@
 			</p>
 			<hr>
 			<a href="post.php?p_id=<?php echo $postId; ?>">
-				<img class="img-responsive" src="images/<?php echo $postImage ?>" alt="">
+				<img class="img-responsive" src="images/<?php echo $postImage ?>" alt="" width="700" height="auto">
 			</a>
 			<hr>
 			<p>
