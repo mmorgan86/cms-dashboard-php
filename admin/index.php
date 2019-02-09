@@ -169,7 +169,7 @@
 
 
       ?>
-
+<!--                   GOOGLE CHART              -->
       <div class="row">
         <script type="text/javascript">
           google.charts.load('current', {'packages':['bar']});
