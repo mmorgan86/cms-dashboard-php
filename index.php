@@ -23,7 +23,7 @@
 					$page = "";
 				}
 
-				if($page == "") {
+				if($page == "" || $page == 1) {
 					$page_1 = 0;
 				} else {
 					$page_1 = ($page * $per_page) - $per_page;
@@ -91,7 +91,7 @@
 
 	<ul class="pager">
 		<?php
-			for($i = 1; $i <= $count; $i++) {
+			for($i = 0; $i <= $count; $i++) {
 
 				if($i == $page) {
 					echo "<li><a class='active_link' href='index.php?page={$i}'>{$i}</a></li>";
