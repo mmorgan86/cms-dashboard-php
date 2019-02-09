@@ -57,7 +57,7 @@
 							<label for="email" class="sr-only">Email</label>
 							<input type="email" name="email" id="email" class="form-control" placeholder="Enter email" required>
 						</div>
-						<div class="form-group">
+						<div class="input-group">
 							<label for="password" class="sr-only">Password</label>
 							<input type="password" name="password" id="key" class="form-control" placeholder="Password" required>
 							<span class="input-group-btn"><button class="btn btn-primary" name="submit" type="submit"> Register</button></span>
