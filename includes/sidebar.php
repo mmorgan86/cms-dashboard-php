@@ -19,10 +19,10 @@
 	<!-- Login Form -->
 	<?php
 		if(isset($_SESSION['username']) == "") {
-			echo "<h2 style='color: red;'>Please Login</h2>"
+		
 	?>
 		<div class="well border border-danger" >
-			<h4>Login</h4>
+			<h4 style='color: red;'>Login</h4>
 			<form action="includes/login.php" method="post">
 				<div class="form-group">
 					<input name="username" type="text" class="form-control border border-danger" placeholder="Enter Username" required="Please enter a valid username">
@@ -39,7 +39,14 @@
 		<!-- Blog Categories Well -->
 		<?php } else {
 		?>
-			<div class="well" >
+
+			<!-- LOGGED IN REMOVE FORM -->
+			<h2>Hi, You are logged in as <?php echo $_SESSION['username']  ?></h2>
+			<button type="submit" value="logout">Logout</button>
+			<button><a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a></button>
+
+
+			<!-- <div class="well" >
 			<h4>Login</h4>
 			<form action="includes/login.php" method="post">
 				<div class="form-group">
@@ -50,10 +57,10 @@
 					<span class="input-group-btn">
 						<button class="btn btn-primary" name="login" type="submit">Login</button>
 					</span>
-				</div>
-			</form> <!-- search form --->
+				</div> -->
+			<!-- </form> search form - -->
 			<!-- /.input-group -->
-		</div>
+		<!-- </div> -->
 		<!-- Blog Categories Well -->
 		<?php
 		}
